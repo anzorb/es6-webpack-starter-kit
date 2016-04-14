@@ -1,0 +1,7 @@
+{
+  "extends": "airbnb/base",
+  "rules": {
+    "indent": ["error", 4],
+    "arrow-body-style": ["error", "as-needed"]
+  }
+}
