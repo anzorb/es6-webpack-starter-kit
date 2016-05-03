@@ -1,8 +1,10 @@
-#### ES6 + Babel + Webpack starter kit by Anzor Bashkhaz
+#### React + ES6 + Babel + Webpack starter kit by Anzor Bashkhaz
 
 [Read the article here](http://anzorb.com/javascript-is-all-grown-up-or-is-it/)
 
-This starter-kit includes everything you need to write ES6 code, along with tests, documentation, and live reloading.
+This starter-kit includes everything you need to write React + ES6 code, along with tests, documentation, and live reloading.
+
+This also demonstrates how to split vendor bundles, to share accross multiple projects and only ship relevant code.
 
 ##### Requirements
 * [Node & NPM](https://nodejs.org/)

@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var baseConfig = require('./webpack.config.common.js');
 var _ = require('lodash');
 var config = require('./config.js');
+var path = require('path');
 
 process.env.BABEL_ENV = 'dev';
 
@@ -21,9 +22,11 @@ module.exports = _.extend(baseConfig, {
             server: {
                 baseDir: config.demo,
                 routes: {
-                    '/dist': config.dist
+                    '/dist': config.dist,
+                    '/node_modules': './node_modules'
                 }
             }
-        })
+        }),
+        new webpack.optimize.CommonsChunkPlugin('vendor', path.join(config.dist, 'vendor.bundle.js'))
     ]
 });

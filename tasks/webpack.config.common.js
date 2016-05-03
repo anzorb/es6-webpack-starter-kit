@@ -1,21 +1,26 @@
 var config = require('./config.js');
+var path = require('path');
 
 module.exports = {
     module: {
         preLoaders: [{
-            test: /(\.js)$/,
+            test: /\.js$/,
             exclude: /(bower_components|node_modules)/,
             loaders: ['eslint'],
         }],
         loaders: [{
-            test: /\.js$/,
+            test: /\.jsx|.js$/,
             exclude: /(bower_components|node_modules)/,
             loader: 'babel',
         }],
     },
+    entry: {
+        app: config.entryPoint,
+        vendor: ['react', 'react-dom']
+    },
     output: {
-        libraryTarget: 'umd',
         library: config.appName,
+        filename: path.join(config.dist, config.appName + '.bundle.js')
     },
     resolve: {
         extensions: [

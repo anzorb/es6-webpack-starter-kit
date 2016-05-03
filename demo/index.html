@@ -1,16 +1,15 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Demo app</title>
-    </head>
-    <body>
-        <div class="container"></div>
-        <script src="dist/Foo.js"></script>
-        <script>
-            var foo = new Foo.default('demo');
-            foo.greet().then(function(value) {
-                document.querySelector('.container').textContent = value;
-            });
-        </script>
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Demo app</title>
+</head>
+
+<body>
+    <div class="container"></div>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="dist/vendor.bundle.js"></script>
+    <script src="dist/Foo.bundle.js"></script>
+</body>
+
 </html>
