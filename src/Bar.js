@@ -5,7 +5,7 @@ const pickOneOutOfThree = () => Math.floor(Math.random(0, 2) * 3);
  * Class Bar. Does things
  * @param {String} name
  */
-export default class Bar {
+class Bar {
     constructor(name) {
         this.name = name;
     }
@@ -17,3 +17,5 @@ export default class Bar {
         return strings[pickOneOutOfThree()];
     }
 }
+
+export default Bar;

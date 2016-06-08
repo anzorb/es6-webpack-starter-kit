@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import Bar from './Bar';
 import { getSomethingFromServer } from './Utils';
 
@@ -7,7 +6,7 @@ import { getSomethingFromServer } from './Utils';
  * @param {String} name
  */
 
-export default class Foo extends Bar {
+class Foo extends Bar {
 
     /**
      * Wait for server, and greet
@@ -19,3 +18,5 @@ export default class Foo extends Bar {
     }
 
 }
+
+export default Foo;

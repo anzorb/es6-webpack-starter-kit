@@ -6,57 +6,47 @@ module.exports = function(config) {
         reporters: ['progress', 'coverage', 'junit'],
         coverageReporter: {
             dir: '../coverage',
-            type: 'cobertura',
-            includeAllSources: true
+            includeAllSources: true,
+            reporters: [{
+                type: 'cobertura'
+            }, {
+                type: 'html'
+            }]
         },
         singleRun: true,
         logLevel: config.LOG_INFO,
         browsers: ['PhantomJS'],
+        files: [
+            '../test/index.js'
+        ],
+        preprocessors: {
+            '../test/index.js': ['webpack', 'sourcemap']
+        },
+        isparta: {
+            babel: {
+                plugins: ['rewire']
+            }
+        },
         webpack: {
             cache: true,
             devtool: 'inline-source-map',
             debug: true,
             module: {
+                preLoaders: [{
+                    test: /\.js$/,
+                    exclude: /(spec|third-party|node_modules|test)/,
+                    loader: 'isparta'
+                }],
                 loaders: [{
                     test: /\.js$/,
                     exclude: /(bower_components|node_modules)/,
-                    loader: 'babel',
+                    loader: 'babel'
                 }]
             },
+            node: {
+                fs: 'empty'
+            }
         },
-        // webpack: {
-        //     //cache: true,
-        //     //devtool: 'inline-source-map',
-        //     //debug: true,
-        //     module: {
-        //         // preLoaders: [{
-        //         //     test: /spec\.js$/,
-        //         //     include: /src/,
-        //         //     exclude: /(bower_components|node_modules)/,
-        //         //     loader: 'babel',
-        //         //     query: {
-        //         //         cacheDirectory: true,
-        //         //     },
-        //         // }, {
-        //         //     test: /\.js?$/,
-        //         //     include: /src/,
-        //         //     exclude: /(node_modules|bower_components|spec)/,
-        //         //     loader: 'babel-istanbul',
-        //         //     query: {
-        //         //         cacheDirectory: true,
-        //         //     },
-        //         // }, ],
-        //         loaders: [{
-        //             test: /\.js$/,
-        //             include: path.resolve(__dirname, '../src'),
-        //             exclude: /(bower_components|node_modules)/,
-        //             loader: 'babel',
-        //             // query: {
-        //             //     cacheDirectory: true,
-        //             // },
-        //         }, ],
-        //     },
-        // },
         junitReporter: {
             outputDir: 'results',
             outputFile: 'test_results.xml',

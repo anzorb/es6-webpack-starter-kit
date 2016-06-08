@@ -15,7 +15,3 @@ This starter-kit includes everything you need to write ES6 code, along with test
     npm run dist will compile, minify, extract sourcemaps and generate documentaion
     npm run karma:tdd compile, open browser and wait for code changes (test driven development)
     npm run karma:ci compile, generate coverage for Jenkins
-
-##### Issues
-
-1. karma:ci fails when using babel-plugin-rewire and running in Phantomjs (https://github.com/speedskater/babel-plugin-rewire/issues/125)
